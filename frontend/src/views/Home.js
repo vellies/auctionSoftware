@@ -348,6 +348,7 @@ class Home extends Component {
           <TableCell className="th4">{project.projectTitle}</TableCell>
           <TableCell className="th4">{project.username}</TableCell>
           <TableCell className="th4">{project.catName}</TableCell>
+          <TableCell className="th4">{project.productName} / {project.price}</TableCell>
           <TableCell className="th4">
 
             <button
@@ -469,6 +470,11 @@ class Home extends Component {
                   </TableCell>
                 <TableCell className="th4" id="th13"
                 >Category</TableCell>
+                
+                <TableCell className="th4"
+                >
+                  Product Name / Price
+                </TableCell>
                 <TableCell className="th4"
                 >
                   Action

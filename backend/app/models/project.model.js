@@ -22,7 +22,7 @@ Project.create = (newProject, result) => {
 };
 
 Project.getAll = result => {
-  sql.query("SELECT * FROM projects p LEFT JOIN users u ON u.user_id=p.user_id LEFT JOIN categories c ON c.cat_id=p.cat_id Where p.active=1", (err, res) => {
+  sql.query("SELECT * FROM projects p LEFT JOIN users u ON u.user_id=p.user_id LEFT JOIN categories c ON c.cat_id=p.cat_id LEFT JOIN products pr ON pr.product_id=u.product_id Where p.active=1", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
