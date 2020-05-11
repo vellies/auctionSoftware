@@ -1,0 +1,48 @@
+{
+    "URL": "localhost:8000/category",
+    "VALUES": [
+        {
+            "catName": "Production",
+            "active": true
+        },
+        {
+            "catName": "Development",
+            "active": true
+        },
+        {
+            "catName": "Testing",
+            "active": true
+        }
+    ],
+    "URL": "localhost:8000/users",
+    "VALUES": [
+        {
+            "username": "vellies",
+            "password": "123",
+            "active": true
+        },
+        {
+            "username": "ravi",
+            "password": "123",
+            "active": true
+        },
+        {
+            "username": "sasi",
+            "password": "123",
+            "active": true
+        }
+    ],
+    "URL": "localhost:8000/product",
+    "VALUES": [
+        {
+            "productName": "pencil",
+            "price": 50,
+            "active": 0
+        },
+        {
+            "productName": "box",
+            "price": 50,
+            "active": 0
+        }
+    ]
+}
