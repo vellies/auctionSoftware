@@ -1,11 +1,12 @@
 module.exports = app => {
   const projects = require("../controllers/project.controller.js");
+  const token =  require('../config/verifyToken');
 
   // Create a new rojects
-  app.post("/project", projects.create);
+  app.post("/project", token.verifyToken,projects.create);
 
   // Retrieve all User
-  app.get("/project", projects.findAll);
+  app.get("/project", token.verifyToken,projects.findAll);
 
   // Update a Project with projectId
   app.put("/project/:projectId", projects.update);

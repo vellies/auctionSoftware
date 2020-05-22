@@ -1,4 +1,7 @@
 const User = require("../models/user.model.js");
+const config = require('../config/jwt.json');
+const token =  require('../config/verifyToken');
+const jwt = require('jsonwebtoken');
 
 // Create and Save a new Customer
 exports.create = (req, res) => {
@@ -46,7 +49,13 @@ exports.login = (req, res) => {
     User.login(req.body.userName,req.body.password, (err, data) => {
       if (err){
         res.send("error")
-      }else res.send(data);
+      }else{
+        jwt.sign( {data} , config.secret,config.expiresIn, (err, token) => {
+          res.json({
+            token,data
+          })
+        });
+      } 
     });
 };
 

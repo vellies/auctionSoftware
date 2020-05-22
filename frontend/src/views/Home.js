@@ -53,26 +53,28 @@ class Home extends Component {
     loginId: '',
     modalTitle: "New Project",
     saveProject: "Add",
-    catList: []
+    catList: [],
+    userToken: ''
   };
 
   // React Lifecycle 
   componentDidMount() {
     _this = this;
     let userData = JSON.parse(localStorage.getItem("user"));
+    console.log("userdata", userData)
     if (userData == null) {
       window.location = "/";
     }
 
-    console.log("LOGG", userData.userId)
     this.setState({
-      loginId: userData.userId
-    })
-
-
-    this.getProjectList();
-    this.getCategoryList()
+      loginId: userData.user.userName,
+      userToken: userData.token
+    }, () => {
+      this.getProjectList();
+      this.getCategoryList();
+    });
   }
+
   getProjectList() {
     axios
       .get(url + `project`, {
@@ -80,7 +82,8 @@ class Home extends Component {
         mode: "no-cors",
         headers: {
           "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "authorization":"Bearer "+this.state.userToken
         },
         withCredentials: true,
         credentials: "same-origin"
@@ -151,7 +154,8 @@ class Home extends Component {
         mode: "no-cors",
         headers: {
           "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "authorization":"Bearer "+this.state.userToken
         },
         withCredentials: true,
         credentials: "same-origin"
@@ -165,7 +169,7 @@ class Home extends Component {
             addProjectModal: !this.state.addProjectModal
           });
         } else {
-
+          
         }
 
       })
@@ -470,7 +474,7 @@ class Home extends Component {
                   </TableCell>
                 <TableCell className="th4" id="th13"
                 >Category</TableCell>
-                
+
                 <TableCell className="th4"
                 >
                   Product Name / Price

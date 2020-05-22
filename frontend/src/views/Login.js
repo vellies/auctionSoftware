@@ -59,14 +59,15 @@ class Login extends Component {
                 credentials: 'same-origin',
             })
                 .then((results) => {
-                    // console.log("ll",results.data.)
+                    // console.log("ll",results.data.token)
                     if (results.data!=="error") {
                         Alert.succesAlert("Login successfully", 1000);
                         this.setState({
                             userName: results.data.username,
                             password: '',
                             email: results.data.email,
-                            userId: results.data.user_id
+                            userId: results.data.user_id,
+                            token:results.data.token
                         })
                         this.componentDidMount();
                         window.location = '/home';

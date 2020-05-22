@@ -36,6 +36,7 @@ class App extends Component {
       password: this.state.Data.password
     }
     let userData = JSON.parse(localStorage.getItem("user"));
+    
     if (this.state.Data.password !== "") {
 
 
@@ -76,6 +77,7 @@ class App extends Component {
   }
   render() {
     let userData = JSON.parse(localStorage.getItem('user'));
+    console.log("tototot",userData)
     return (
       <div>
         {/* Change Password Modal Start */}
@@ -157,7 +159,7 @@ class App extends Component {
                 userData != null ? (<Link to={'/logout'}><img className="ProfileImg" src={LogoutImg} /></Link>) : ''
               }
               {
-                userData != null ? (<li className="headerUserName">{userData.userName}</li>) : ''
+                userData != null ? (<li className="headerUserName">{userData.user.userName}</li>) : ''
               }
 
 
